@@ -1,7 +1,6 @@
 package MergeSort;
 
 public class MergeSort {
-
     private static final int CUTOFF = 10;
 
     public static void sort(int[] arr) {
@@ -9,13 +8,11 @@ public class MergeSort {
         int[] buffer = new int[arr.length];
         mergeSorting(arr, buffer, 0, arr.length - 1, 0, null);
     }
-
     static void sortWithMetrics(int[] arr, Metrics m) {
         if (arr == null || arr.length < 2) return;
         int[] buffer = new int[arr.length];
         mergeSorting(arr, buffer, 0, arr.length - 1, 0, m);
     }
-
     private static void mergeSorting(int[] arr, int[] buf, int left, int right, int depth, Metrics m) {
         if (m != null) m.maxDepth = Math.max(m.maxDepth, depth);
         int size = right - left + 1;

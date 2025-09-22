@@ -16,10 +16,10 @@ public class MergeSortMetricsTest {
         }
     }
 
-    private static void randomTrials(int trials, int n, long seed) {
-        Random rnd = new Random(seed);
-        for (int t = 0; t < trials; t++) {
-            int[] a = rnd.ints(n, -1_000_000, 1_000_000).toArray();
+    private static void randomTrials() {
+        Random rnd = new Random(123);
+        for (int t = 0; t < 5; t++) {
+            int[] a = rnd.ints(100000, -1_000_000, 1_000_000).toArray();
             int[] expect = Arrays.copyOf(a, a.length);
             Arrays.sort(expect);
 
@@ -31,12 +31,13 @@ public class MergeSortMetricsTest {
                 throw new AssertionError("Random trial failed at t=" + t);
             }
 
-            System.out.println("random n=" + n + " -> " + m);
+            System.out.println("random n=" + 100000 + " -> " + m);
         }
     }
 
     private static void stabilityCheck() {
-        class Pair { int key, pos; Pair(int k, int p){ key=k; pos=p; } }
+        class Pair { final int key;
+            final int pos; Pair(int k, int p){ key=k; pos=p; } }
         Pair[] pairs = { new Pair(3,0), new Pair(1,1), new Pair(3,2), new Pair(1,3), new Pair(3,4) };
         int[] keys = Arrays.stream(pairs).mapToInt(p -> p.key).toArray();
 
@@ -56,7 +57,7 @@ public class MergeSortMetricsTest {
 
         testCase(new int[]{2,2,2,2,2,1,1,1,1,1}, new int[]{1,1,1,1,1,2,2,2,2,2});
 
-        randomTrials(5, 100_000, 123);
+        randomTrials();
 
         stabilityCheck();
     }
