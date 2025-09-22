@@ -8,7 +8,7 @@ public class QuickSortTest {
         testReverse();
         testDuplicates();
         testDepth();
-        System.out.println("All self-tests passed ✅");
+        System.out.println("All self-tests passed ");
     }
 
     private static void testRandom() {
