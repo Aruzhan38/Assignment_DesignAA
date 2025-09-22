@@ -32,7 +32,7 @@ public class DeterministicSelectTest {
         checkOne(new int[]{-3,-1,-1,0,7,7,9}, 6);
         checkOne(new int[]{9,8,7,6,5,4,3,2,1}, 4);
 
-        System.out.println("All deterministic-select tests passed ✅");
+        System.out.println("All deterministic-select tests passed");
     }
 
     private static void checkOne(int[] original, int k) {
